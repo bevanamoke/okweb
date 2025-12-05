@@ -1,0 +1,24 @@
+mutation AddProjectTask($assigneeId: UUID!, $projectId: UUID!, $dueDate: Date!, $name: String!, $status: String!) @auth(level: USER) {
+  projectTask_insert(data: {assigneeId: $assigneeId, projectId: $projectId, dueDate: $dueDate, name: $name, status: $status})
+}
+
+query ListProjectsForClient($clientId: UUID!) @auth(level: USER) {
+  projects(where: {clientId: {eq: $clientId}}) {
+    id
+    name
+    description
+  }
+}
+
+mutation UpdateProjectStatus($id: UUID!, $status: String!) @auth(level: USER) {
+  project_update(key: {id: $id}, data: {status: $status})
+}
+
+query ListUsers @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  users {
+    id
+    displayName
+    email
+    role
+  }
+}

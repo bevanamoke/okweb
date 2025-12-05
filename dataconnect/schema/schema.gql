@@ -1,0 +1,55 @@
+type User @table {
+  displayName: String!
+  email: String!
+  role: String!
+  photoUrl: String
+  phoneNumber: String
+}
+
+type Client @table {
+  name: String!
+  contactPerson: User!
+  createdAt: Timestamp!
+  address: String
+  website: String
+  industry: String
+}
+
+type ServiceCategory @table {
+  name: String!
+  createdAt: Timestamp!
+  description: String
+}
+
+type Project @table {
+  name: String!
+  client: Client!
+  serviceCategory: ServiceCategory!
+  status: String!
+  startDate: Date!
+  createdAt: Timestamp!
+  description: String
+  endDate: Date
+  budget: Float
+}
+
+type ProjectTask @table {
+  project: Project!
+  name: String!
+  assignee: User!
+  status: String!
+  dueDate: Date!
+  createdAt: Timestamp!
+  description: String
+  completedAt: Timestamp
+}
+
+type Communication @table {
+  sender: User!
+  message: String!
+  timestamp: Timestamp!
+  type: String!
+  project: Project
+  receiver: User
+  subject: String
+}
