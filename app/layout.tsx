@@ -13,21 +13,8 @@ export const metadata: Metadata = {
     "Transform your African business with Odoo ERP, AI automation, and custom software. Smart. Scalable. African.",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    // single favicon file
+    icon: "/oks_favicon.png",
   },
 }
 
