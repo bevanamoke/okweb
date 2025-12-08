@@ -1,0 +1,10 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/ai-automation/page": "app/ai-automation/page.js",
+  "/industries/page": "app/industries/page.js",
+  "/odoo/page": "app/odoo/page.js",
+  "/page": "app/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/web-app-development/page": "app/web-app-development/page.js"
+}

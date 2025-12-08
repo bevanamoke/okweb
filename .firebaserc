@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "oks-website"
+  },
+  "targets": {},
+  "etags": {
+    "oks-website": {
+      "extensionInstances": {}
+    }
+  }
+}

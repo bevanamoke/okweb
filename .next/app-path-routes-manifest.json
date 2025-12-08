@@ -1,0 +1,10 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/ai-automation/page": "/ai-automation",
+  "/industries/page": "/industries",
+  "/odoo/page": "/odoo",
+  "/page": "/",
+  "/pricing/page": "/pricing",
+  "/web-app-development/page": "/web-app-development"
+}
