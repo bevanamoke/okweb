@@ -45,8 +45,10 @@ export default function Header() {
         </button>
 
         {/* CTA Button */}
-        <Button className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground">
-          Get a Free Consultation
+        <Button asChild className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank">
+            Get a Free Consultation
+          </Link>
         </Button>
 
         {/* Mobile Menu */}
@@ -71,8 +73,10 @@ export default function Header() {
               <Link href="/pricing" className="text-sm text-foreground/80">
                 Pricing
               </Link>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                Get a Free Consultation
+              <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank">
+                  Get a Free Consultation
+                </Link>
               </Button>
             </div>
           </div>
