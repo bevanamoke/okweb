@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 
@@ -46,9 +47,11 @@ export default function Pricing() {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            Request a Quote
-          </Button>
+          <Link href="/quote">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              Request a Quote
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

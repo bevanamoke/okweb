@@ -44,10 +44,11 @@ export default function Header() {
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* CTA Button */}
-        <Button className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground">
-          Get a Free Consultation
-        </Button>
+        <Link href="/quote">
+          <Button className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground">
+            Get a Quote
+          </Button>
+        </Link>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
@@ -71,9 +72,9 @@ export default function Header() {
               <Link href="/pricing" className="text-sm text-foreground/80">
                 Pricing
               </Link>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                Get a Free Consultation
-              </Button>
+              <Link href="/quote" className="w-full">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">Get a Quote</Button>
+              </Link>
             </div>
           </div>
         )}

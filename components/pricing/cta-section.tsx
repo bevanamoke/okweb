@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
@@ -17,10 +18,12 @@ export function CTASection() {
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center">
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
-            Request a Quote
-            <ArrowRight className="w-4 h-4" />
-          </Button>
+          <Link href="/quote">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+              Request a Quote
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
           <Button className="border border-primary text-primary hover:bg-primary/10 gap-2">
             Book Free Consultation
           </Button>
