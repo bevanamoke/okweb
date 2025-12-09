@@ -44,10 +44,9 @@ export default function Header() {
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* CTA Button */}
         <Button asChild className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground">
-          <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank">
-            Get a Free Consultation
+          <Link href="/quote">
+            Get a Quote
           </Link>
         </Button>
 
@@ -74,8 +73,8 @@ export default function Header() {
                 Pricing
               </Link>
               <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank">
-                  Get a Free Consultation
+                <Link href="/quote">
+                  Get a Quote
                 </Link>
               </Button>
             </div>
