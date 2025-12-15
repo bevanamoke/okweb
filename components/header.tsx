@@ -42,8 +42,8 @@ export default function Header() {
         </button>
 
         <Button asChild className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground">
-          <Link href="/quote">
-            Get a Quote
+          <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer">
+            Book Consultation
           </Link>
         </Button>
 
@@ -67,8 +67,8 @@ export default function Header() {
                 Industries
               </Link>
               <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                <Link href="/quote">
-                  Get a Quote
+                <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer">
+                  Book Consultation
                 </Link>
               </Button>
             </div>

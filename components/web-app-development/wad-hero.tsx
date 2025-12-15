@@ -16,8 +16,10 @@ export default function WadHero() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button size="lg" className="bg-primary hover:bg-primary/90">
-            Start Your Project
+          <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+            <a href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer">
+              Book Consultation
+            </a>
           </Button>
           <Button size="lg" variant="outline">
             View Our Work

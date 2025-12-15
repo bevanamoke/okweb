@@ -26,9 +26,9 @@ export default function CTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/quote">
+            <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/25 transition-all">
-                Request a Quote
+                Book Consultation
               </Button>
             </Link>
             <Link href="/quote">

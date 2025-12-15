@@ -64,12 +64,12 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Link href="/demo">
-              <MagneticButton className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300">
-                Request a Demo
+            <MagneticButton className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300">
+              <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer" className="flex items-center w-full h-full justify-center">
+                Book Consultation
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </MagneticButton>
-            </Link>
+              </Link>
+            </MagneticButton>
             <Link href="#solutions">
               <MagneticButton variant="outline" className="px-8 py-6 text-lg rounded-full border-2 hover:bg-accent/5 transition-all duration-300">
                 Explore Our Solutions

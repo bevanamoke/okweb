@@ -24,8 +24,10 @@ export function CTASection() {
               <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
-          <Button className="border border-primary text-primary hover:bg-primary/10 gap-2">
-            Book Free Consultation
+          <Button className="border border-primary text-primary hover:bg-primary/10 gap-2" asChild>
+            <a href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer">
+              Book Free Consultation
+            </a>
           </Button>
         </div>
 

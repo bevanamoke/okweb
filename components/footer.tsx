@@ -55,8 +55,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/quote" className="hover:text-primary transition">
-                  Request Quote
+                <Link href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">
+                  Book Consultation
                 </Link>
               </li>
             </ul>

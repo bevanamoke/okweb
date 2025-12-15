@@ -77,17 +77,19 @@ export default function SchoolErpHero() {
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
                         <a
-                            href="#demo"
+                            href="https://calendly.com/omnitechkernelsolutions/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="group px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50"
                         >
-                            Request Private Demo
+                            Book Consultation
                             <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
                         </a>
                         <a
                             href="/quote"
                             className="px-8 py-4 bg-card border border-border text-foreground rounded-lg font-semibold text-lg hover:bg-card/80 transition-all duration-300 hover:scale-105"
                         >
-                            Get a Quote
+                            Get Pricing
                         </a>
                     </motion.div>
 

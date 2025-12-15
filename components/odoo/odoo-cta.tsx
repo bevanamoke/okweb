@@ -12,11 +12,15 @@ export default function OdooCTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            Book a Consultation
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+            <a href="https://calendly.com/omnitechkernelsolutions/30min" target="_blank" rel="noopener noreferrer">
+              Book a Consultation
+            </a>
           </Button>
-          <Button size="lg" variant="outline">
-            Contact Us
+          <Button size="lg" variant="outline" asChild>
+            <a href="/quote">
+              Get Pricing
+            </a>
           </Button>
         </div>
 
