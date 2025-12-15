@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { CheckCircle2, Mail, Phone, Calendar, ArrowRight, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export default function ThankYouPage() {
+function ThankYouContent() {
     const searchParams = useSearchParams()
     const [orderDetails, setOrderDetails] = useState({
         reference: "",
@@ -237,5 +237,22 @@ export default function ThankYouPage() {
                 </div>
             </section>
         </main>
+    )
+}
+
+export default function ThankYouPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 animate-spin">
+                        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full"></div>
+                    </div>
+                    <p className="text-foreground/70">Loading...</p>
+                </div>
+            </div>
+        }>
+            <ThankYouContent />
+        </Suspense>
     )
 }
