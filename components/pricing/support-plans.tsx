@@ -1,6 +1,17 @@
+"use client"
+
 import { CheckCircle2 } from "lucide-react"
 
 export function SupportPlans() {
+  const handleCheckout = (planName: string) => {
+    // Map plan names to Paystack checkout URLs
+    const checkoutUrls: { [key: string]: string } = {
+      "Starter Support": "https://paystack.com/pay/oks-starter-support",
+      "Business Support": "https://paystack.com/pay/oks-business-support",
+      "Enterprise Support": "https://paystack.com/pay/oks-enterprise-support",
+    }
+    window.location.href = checkoutUrls[planName] || "https://paystack.com/pay/oks-support"
+  }
   const plans = [
     {
       name: "Starter Support",
@@ -41,11 +52,10 @@ export function SupportPlans() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-lg border transition-all ${
-                plan.highlighted
-                  ? "border-primary bg-primary/5 ring-2 ring-primary/20 scale-105"
-                  : "border-border bg-card"
-              } p-8`}
+              className={`rounded-lg border transition-all ${plan.highlighted
+                ? "border-primary bg-primary/5 ring-2 ring-primary/20 scale-105"
+                : "border-border bg-card"
+                } p-8`}
             >
               <h3 className="text-xl font-semibold text-foreground mb-2">{plan.name}</h3>
               <div className="mb-6">
@@ -63,11 +73,11 @@ export function SupportPlans() {
               </ul>
 
               <button
-                className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
-                  plan.highlighted
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "border border-primary text-primary hover:bg-primary/10"
-                }`}
+                onClick={() => handleCheckout(plan.name)}
+                className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${plan.highlighted
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  : "border border-primary text-primary hover:bg-primary/10"
+                  }`}
               >
                 Choose Plan
               </button>

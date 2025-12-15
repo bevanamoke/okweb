@@ -1,4 +1,18 @@
+"use client"
+
 export function OdooAddOns() {
+  const handleCheckout = (addonTitle: string) => {
+    // Map addon titles to Paystack checkout URLs
+    const checkoutUrls: { [key: string]: string } = {
+      "Custom Odoo Modules": "https://paystack.com/pay/oks-custom-odoo-modules",
+      "MPesa Integration": "https://paystack.com/pay/oks-mpesa-integration",
+      "Advanced Inventory & Manufacturing": "https://paystack.com/pay/oks-advanced-inventory",
+      "School Management Pack": "https://paystack.com/pay/oks-school-management",
+      "Restaurant / POS Pack": "https://paystack.com/pay/oks-restaurant-pos",
+      "Law Firm Pack": "https://paystack.com/pay/oks-law-firm-pack",
+    }
+    window.location.href = checkoutUrls[addonTitle] || "https://paystack.com/pay/oks-odoo-addon"
+  }
   const addons = [
     {
       title: "Custom Odoo Modules",
@@ -47,7 +61,8 @@ export function OdooAddOns() {
           {addons.map((addon) => (
             <div
               key={addon.title}
-              className="bg-background border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
+              onClick={() => handleCheckout(addon.title)}
+              className="bg-background border border-border rounded-lg p-6 hover:border-primary/50 transition-colors cursor-pointer"
             >
               <div className="text-3xl mb-3">{addon.icon}</div>
               <h3 className="font-semibold text-foreground mb-2">{addon.title}</h3>

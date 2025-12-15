@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Footer from "@/components/footer"
 import OdooHero from "@/components/odoo/odoo-hero"
 import OdooWhatIs from "@/components/odoo/odoo-what-is"
 import OdooWhy from "@/components/odoo/odoo-why"
@@ -26,7 +25,6 @@ export default function OdooPage() {
         <OdooServices />
         <OdooCTA />
       </main>
-      <Footer />
     </>
   )
 }

@@ -1,7 +1,13 @@
+"use client"
+
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function OdooPricing() {
+  const handleCheckout = () => {
+    // Redirect to Paystack checkout for Odoo Community Edition
+    window.location.href = "https://paystack.com/pay/oks-odoo-community"
+  }
   const features = [
     "Full Odoo Community installation",
     "Server setup (Local, VPS, or Cloud)",
@@ -54,7 +60,7 @@ export function OdooPricing() {
             </div>
           </div>
 
-          <Button className="w-full md:w-auto mt-8 mx-auto block bg-primary hover:bg-primary/90">
+          <Button onClick={handleCheckout} className="w-full md:w-auto mt-8 mx-auto block bg-primary hover:bg-primary/90">
             Get Started with Odoo
           </Button>
         </div>

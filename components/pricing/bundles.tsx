@@ -1,7 +1,18 @@
+"use client"
+
 import { Gift, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Bundles() {
+  const handleCheckout = (bundleTitle: string) => {
+    // Map bundle titles to Paystack checkout URLs
+    const checkoutUrls: { [key: string]: string } = {
+      "SME Digital Transformation Pack": "https://paystack.com/pay/oks-sme-digital-pack",
+      "School Digital System Pack": "https://paystack.com/pay/oks-school-digital-pack",
+      "Restaurant Complete Automation": "https://paystack.com/pay/oks-restaurant-automation",
+    }
+    window.location.href = checkoutUrls[bundleTitle] || "https://paystack.com/pay/oks-custom-bundle"
+  }
   const bundles = [
     {
       title: "SME Digital Transformation Pack",
@@ -39,11 +50,10 @@ export function Bundles() {
           {bundles.map((bundle) => (
             <div
               key={bundle.title}
-              className={`rounded-lg border transition-all ${
-                bundle.highlighted
-                  ? "border-primary bg-primary/5 ring-2 ring-primary/20 scale-105"
-                  : "border-border bg-card"
-              } p-8`}
+              className={`rounded-lg border transition-all ${bundle.highlighted
+                ? "border-primary bg-primary/5 ring-2 ring-primary/20 scale-105"
+                : "border-border bg-card"
+                } p-8`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-3xl">{bundle.icon}</span>
@@ -65,11 +75,11 @@ export function Bundles() {
               </ul>
 
               <Button
-                className={`w-full ${
-                  bundle.highlighted
-                    ? "bg-primary hover:bg-primary/90"
-                    : "border border-primary text-primary hover:bg-primary/10 bg-transparent"
-                }`}
+                onClick={() => handleCheckout(bundle.title)}
+                className={`w-full ${bundle.highlighted
+                  ? "bg-primary hover:bg-primary/90"
+                  : "border border-primary text-primary hover:bg-primary/10 bg-transparent"
+                  }`}
               >
                 Learn More
               </Button>

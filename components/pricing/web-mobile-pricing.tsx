@@ -1,4 +1,17 @@
+"use client"
+
 export function WebMobilePricing() {
+  const handleCheckout = (serviceTitle: string) => {
+    // Map service titles to Paystack checkout URLs
+    const checkoutUrls: { [key: string]: string } = {
+      "Business Website": "https://paystack.com/pay/oks-business-website",
+      "E-Commerce Website": "https://paystack.com/pay/oks-ecommerce-website",
+      "Custom Web App": "https://paystack.com/pay/oks-custom-web-app",
+      "Basic Mobile App": "https://paystack.com/pay/oks-basic-mobile-app",
+      "Professional Mobile App": "https://paystack.com/pay/oks-professional-mobile-app",
+    }
+    window.location.href = checkoutUrls[serviceTitle] || "https://paystack.com/pay/oks-custom-service"
+  }
   const webServices = [
     {
       title: "Business Website",
@@ -44,7 +57,8 @@ export function WebMobilePricing() {
           {webServices.map((service) => (
             <div
               key={service.title}
-              className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
+              onClick={() => handleCheckout(service.title)}
+              className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors cursor-pointer"
             >
               <div className="text-3xl mb-3">{service.icon}</div>
               <h3 className="font-semibold text-foreground mb-2">{service.title}</h3>
@@ -60,7 +74,8 @@ export function WebMobilePricing() {
           {mobileServices.map((service) => (
             <div
               key={service.title}
-              className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
+              onClick={() => handleCheckout(service.title)}
+              className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors cursor-pointer"
             >
               <div className="text-3xl mb-3">{service.icon}</div>
               <h3 className="font-semibold text-foreground mb-2">{service.title}</h3>

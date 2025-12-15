@@ -1,4 +1,3 @@
-import Footer from "@/components/footer"
 import IndustriesHero from "@/components/industries-page/industries-hero"
 import RestaurantsSection from "@/components/industries-page/restaurants-section"
 import RetailSection from "@/components/industries-page/retail-section"
@@ -33,7 +32,6 @@ export default function IndustriesPage() {
         <RealEstateSection />
         <IndustriesCTA />
       </main>
-      <Footer />
     </>
   )
 }

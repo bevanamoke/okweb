@@ -7,7 +7,6 @@ import Process from "@/components/process"
 import Pricing from "@/components/pricing"
 import Testimonials from "@/components/testimonials"
 import CTA from "@/components/cta"
-import Footer from "@/components/footer"
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <Pricing />
       <Testimonials />
       <CTA />
-      <Footer />
     </main>
   )
 }

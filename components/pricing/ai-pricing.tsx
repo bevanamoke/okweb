@@ -1,6 +1,17 @@
+"use client"
+
 import { Zap } from "lucide-react"
 
 export function AIPricing() {
+  const handleCheckout = (planName: string) => {
+    // Map plan names to Paystack checkout URLs
+    const checkoutUrls: { [key: string]: string } = {
+      "AI Starter": "https://paystack.com/pay/oks-ai-starter",
+      "AI Business": "https://paystack.com/pay/oks-ai-business",
+      "AI Enterprise": "https://paystack.com/pay/oks-ai-enterprise",
+    }
+    window.location.href = checkoutUrls[planName] || "https://paystack.com/pay/oks-ai-custom"
+  }
   const plans = [
     {
       name: "AI Starter",
@@ -43,11 +54,10 @@ export function AIPricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-lg border transition-all p-8 ${
-                plan.highlighted
-                  ? "border-primary bg-background ring-2 ring-primary/20 scale-105"
-                  : "border-border bg-background"
-              }`}
+              className={`rounded-lg border transition-all p-8 ${plan.highlighted
+                ? "border-primary bg-background ring-2 ring-primary/20 scale-105"
+                : "border-border bg-background"
+                }`}
             >
               <div className="text-4xl mb-4">{plan.icon}</div>
               <h3 className="text-xl font-semibold text-foreground mb-1">{plan.name}</h3>
@@ -66,11 +76,11 @@ export function AIPricing() {
               </ul>
 
               <button
-                className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
-                  plan.highlighted
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "border border-primary text-primary hover:bg-primary/10"
-                }`}
+                onClick={() => handleCheckout(plan.name)}
+                className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${plan.highlighted
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  : "border border-primary text-primary hover:bg-primary/10"
+                  }`}
               >
                 Automate My Business
               </button>

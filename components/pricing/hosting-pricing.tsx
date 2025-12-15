@@ -1,6 +1,17 @@
+"use client"
+
 import { Server } from "lucide-react"
 
 export function HostingPricing() {
+  const handleCheckout = (planTitle: string) => {
+    // Map plan titles to Paystack checkout URLs
+    const checkoutUrls: { [key: string]: string } = {
+      "Shared Hosting": "https://paystack.com/pay/oks-shared-hosting",
+      "VPS Hosting": "https://paystack.com/pay/oks-vps-hosting",
+      "Managed Cloud": "https://paystack.com/pay/oks-managed-cloud",
+    }
+    window.location.href = checkoutUrls[planTitle] || "https://paystack.com/pay/oks-hosting"
+  }
   const plans = [
     {
       title: "Shared Hosting",
@@ -31,7 +42,8 @@ export function HostingPricing() {
           {plans.map((plan) => (
             <div
               key={plan.title}
-              className="bg-background border border-border rounded-lg p-8 hover:border-primary/50 transition-colors"
+              onClick={() => handleCheckout(plan.title)}
+              className="bg-background border border-border rounded-lg p-8 hover:border-primary/50 transition-colors cursor-pointer"
             >
               <Server className="w-8 h-8 text-primary mb-4" />
               <h3 className="text-xl font-semibold text-foreground mb-2">{plan.title}</h3>
