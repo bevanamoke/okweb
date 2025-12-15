@@ -70,6 +70,22 @@ export default function RestaurantsSection() {
           <p className="text-foreground font-semibold">Outcome:</p>
           <p className="text-foreground/80">Faster service, reduced waste, fewer errors, happier customers.</p>
         </div>
+
+        <div className="mt-6 p-6 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg border-2 border-primary/30">
+          <p className="text-foreground font-bold text-lg mb-2">
+            🍽️ Complete Hospitality ERP Solution
+          </p>
+          <p className="text-foreground/80 mb-4">
+            Run your entire restaurant, bar, or hotel operation from one screen. Cut losses, increase margins, and scale with complete control.
+          </p>
+          <a
+            href="/hospitality_erp"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50"
+          >
+            Explore Hospitality ERP
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
       </div>
     </section>
   )

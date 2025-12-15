@@ -6,7 +6,7 @@ export default function AiHero() {
       <div className="container max-w-6xl mx-auto px-4 text-center">
         <div className="space-y-6 mb-12">
           <h1 className="text-5xl md:text-6xl font-bold text-balance">
-            AI Automation & Intelligent Business Systems
+            Automation & Intelligent Business Systems
             <span className="text-primary"> Transform Your Operations</span>
           </h1>
           <p className="text-xl text-foreground/70 max-w-2xl mx-auto text-balance">
@@ -17,7 +17,7 @@ export default function AiHero() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Button size="lg" className="bg-primary hover:bg-primary/90">
-            Start AI Automation
+            Start Automation
           </Button>
           <Button size="lg" variant="outline">
             See Use Cases

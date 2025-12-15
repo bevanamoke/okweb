@@ -26,16 +26,13 @@ export default function Header() {
             Odoo
           </Link>
           <Link href="/ai-automation" className="text-sm text-foreground/80 hover:text-foreground transition">
-            AI Automation
+            Automation
           </Link>
           <Link href="/web-app-development" className="text-sm text-foreground/80 hover:text-foreground transition">
             Web & App Development
           </Link>
           <Link href="/industries" className="text-sm text-foreground/80 hover:text-foreground transition">
             Industries
-          </Link>
-          <Link href="/pricing" className="text-sm text-foreground/80 hover:text-foreground transition">
-            Pricing
           </Link>
         </div>
 
@@ -61,16 +58,13 @@ export default function Header() {
                 Odoo
               </Link>
               <Link href="/ai-automation" className="text-sm text-foreground/80">
-                AI Automation
+                Automation
               </Link>
               <Link href="/web-app-development" className="text-sm text-foreground/80">
                 Web & App Development
               </Link>
               <Link href="/industries" className="text-sm text-foreground/80">
                 Industries
-              </Link>
-              <Link href="/pricing" className="text-sm text-foreground/80">
-                Pricing
               </Link>
               <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Link href="/quote">

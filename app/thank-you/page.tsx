@@ -180,8 +180,8 @@ function ThankYouContent() {
                         </Button>
 
                         <Button asChild size="lg" variant="outline">
-                            <Link href="/pricing">
-                                View Other Services
+                            <Link href="/quote">
+                                Get Another Quote
                             </Link>
                         </Button>
                     </div>

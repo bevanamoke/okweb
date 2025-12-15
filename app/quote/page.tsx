@@ -10,20 +10,30 @@ import { ArrowLeft } from "lucide-react"
 export default function QuotePage() {
   const [service, setService] = useState<string>("odoo")
   const [selections, setSelections] = useState({
+    // Odoo
     odooComplexity: 1.0,
     odooCustomizations: 0,
     odooIntegrations: 0,
     odooRush: false,
+    // AI
     aiType: "basic",
     aiAgents: 0,
     aiIntegrations: 0,
     aiRush: false,
+    // Web
     webType: "website",
     webFeatures: 0,
     webIntegrations: 0,
     webRush: false,
+    // School ERP
+    schoolTier: "foundation", // foundation, professional, executive
+    schoolStudents: "0-500", // 0-500, 501-1000, 1000+
+    // Hospitality ERP
+    hospitalityTier: "starter", // starter, growth, enterprise
+    hospitalityOutlets: 1,
   })
   const [estimatedPrice, setEstimatedPrice] = useState(0)
+  const [recurringPrice, setRecurringPrice] = useState(0)
   const [contactInfo, setContactInfo] = useState({
     name: "",
     email: "",
@@ -34,6 +44,7 @@ export default function QuotePage() {
 
   // Calculation Logic
   useEffect(() => {
+    // Base Rates (KES)
     const ODOO_BASE = 30000
     const ODOO_CUSTOMIZATION = 5000
     const ODOO_INTEGRATION = 8000
@@ -52,7 +63,22 @@ export default function QuotePage() {
     const WEB_INTEGRATION = 10000
     const WEB_RUSH = 0.15
 
+    // School ERP Rates
+    const SCHOOL_TIERS = {
+      foundation: { setup: 180000, monthly: 12000 },
+      professional: { setup: 350000, monthly: 20000 },
+      executive: { setup: 600000, monthly: 35000 },
+    }
+
+    // Hospitality ERP Rates (Estimated)
+    const HOSPITALITY_TIERS = {
+      starter: { setup: 80000, monthly: 5000 },
+      growth: { setup: 150000, monthly: 10000 },
+      enterprise: { setup: 300000, monthly: 25000 },
+    }
+
     let price = 0
+    let recurring = 0
 
     if (service === "odoo") {
       price = ODOO_BASE * selections.odooComplexity
@@ -80,9 +106,27 @@ export default function QuotePage() {
       price += selections.webFeatures * WEB_FEATURE
       price += selections.webIntegrations * WEB_INTEGRATION
       if (selections.webRush) price *= 1 + WEB_RUSH
+    } else if (service === "school_erp") {
+      const tier = SCHOOL_TIERS[selections.schoolTier as keyof typeof SCHOOL_TIERS]
+      price = tier.setup
+      recurring = tier.monthly
+
+      // Add student count scaling logic if needed, for now just base tier price
+      if (selections.schoolStudents === "501-1000") recurring *= 1.5
+      if (selections.schoolStudents === "1000+") recurring *= 2.0
+    } else if (service === "hospitality_erp") {
+      const tier = HOSPITALITY_TIERS[selections.hospitalityTier as keyof typeof HOSPITALITY_TIERS]
+      price = tier.setup * selections.hospitalityOutlets // Setup per outlet roughly
+      recurring = tier.monthly * selections.hospitalityOutlets
+
+      // Discount for multiple outlets
+      if (selections.hospitalityOutlets > 1) {
+        price *= 0.9 // 10% discount on setup for multiple
+      }
     }
 
     setEstimatedPrice(Math.round(price / 100) * 100)
+    setRecurringPrice(Math.round(recurring / 100) * 100)
   }, [service, selections])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -95,6 +139,7 @@ export default function QuotePage() {
           service,
           selections,
           estimatedPrice,
+          recurringPrice,
           contactInfo,
           timestamp: new Date().toISOString(),
         }),
@@ -117,12 +162,19 @@ export default function QuotePage() {
             <p className="text-lg text-foreground/80 mb-6">
               We've received your quote request. Our team will contact you within 24 hours.
             </p>
-            <p className="text-muted-foreground mb-8">
-              Estimated Price:{" "}
-              <span className="text-2xl font-bold text-primary">KES {estimatedPrice.toLocaleString()}</span>
-            </p>
+            <div className="text-muted-foreground mb-8 text-left inline-block bg-muted/30 p-6 rounded-lg">
+              <p className="mb-2">Estimated One-Time Cost:</p>
+              <p className="text-2xl font-bold text-primary mb-4">KES {estimatedPrice.toLocaleString()}</p>
+              {recurringPrice > 0 && (
+                <>
+                  <p className="mb-2">Estimated Recurring Cost:</p>
+                  <p className="text-2xl font-bold text-secondary">KES {recurringPrice.toLocaleString()}<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
+                </>
+              )}
+            </div>
+            <br />
             <Link href="/">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">Return to Home</Button>
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground mt-6">Return to Home</Button>
             </Link>
           </div>
         </div>
@@ -150,6 +202,8 @@ export default function QuotePage() {
                 <div className="space-y-2">
                   {[
                     { id: "odoo", label: "Odoo ERP Implementation" },
+                    { id: "school_erp", label: "School ERP" },
+                    { id: "hospitality_erp", label: "Hospitality ERP" },
                     { id: "ai", label: "AI Automation" },
                     { id: "web", label: "Web & App Development" },
                   ].map((svc) => (
@@ -160,7 +214,7 @@ export default function QuotePage() {
                         value={svc.id}
                         checked={service === svc.id}
                         onChange={(e) => setService(e.target.value)}
-                        className="w-4 h-4"
+                        className="w-4 h-4 text-primary focus:ring-primary"
                       />
                       <span className="text-foreground">{svc.label}</span>
                     </label>
@@ -229,6 +283,82 @@ export default function QuotePage() {
                   </label>
                 </>
               )}
+
+              {/* School ERP Options */}
+              {service === "school_erp" && (
+                <>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-3">Institution Tier</label>
+                    <select
+                      value={selections.schoolTier}
+                      onChange={(e) => setSelections({ ...selections, schoolTier: e.target.value })}
+                      className="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground"
+                    >
+                      <option value="foundation">Foundation (Startups/Transitioning)</option>
+                      <option value="professional">Professional (Established)</option>
+                      <option value="executive">Executive (Board-level oversight)</option>
+                    </select>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {selections.schoolTier === "foundation" && "Includes core mgmt, invoicing, reporting."}
+                      {selections.schoolTier === "professional" && "Adds grading, portals, auto-alerts."}
+                      {selections.schoolTier === "executive" && "Adds advanced analytics, dashboards, branded portals."}
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-3">Number of Students</label>
+                    <select
+                      value={selections.schoolStudents}
+                      onChange={(e) => setSelections({ ...selections, schoolStudents: e.target.value })}
+                      className="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground"
+                    >
+                      <option value="0-500">0 - 500 Students</option>
+                      <option value="501-1000">501 - 1,000 Students</option>
+                      <option value="1000+">1,000+ Students</option>
+                    </select>
+                  </div>
+                </>
+              )}
+
+              {/* Hospitality ERP Options */}
+              {service === "hospitality_erp" && (
+                <>
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-3">Package Tier</label>
+                    <select
+                      value={selections.hospitalityTier}
+                      onChange={(e) => setSelections({ ...selections, hospitalityTier: e.target.value })}
+                      className="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground"
+                    >
+                      <option value="starter">Starter (Single Outlet)</option>
+                      <option value="growth">Growth (Scaling)</option>
+                      <option value="enterprise">Enterprise (Chains/Hotels)</option>
+                    </select>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {selections.hospitalityTier === "starter" && "POS, Inventory, Basic Accounting."}
+                      {selections.hospitalityTier === "growth" && "Adds Recipe Costing, Multi-user, Advanced Reports."}
+                      {selections.hospitalityTier === "enterprise" && "Multi-branch, Custom Workflows, Full Finance."}
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-3">
+                      Number of Outlets/Branches
+                    </label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="50"
+                      value={selections.hospitalityOutlets}
+                      onChange={(e) =>
+                        setSelections({ ...selections, hospitalityOutlets: Math.max(1, Number.parseInt(e.target.value)) })
+                      }
+                      className="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground"
+                    />
+                  </div>
+                </>
+              )}
+
 
               {/* AI Options */}
               {service === "ai" && (
@@ -352,10 +482,18 @@ export default function QuotePage() {
           <div className="space-y-6">
             {/* Price Display */}
             <div className="bg-primary/10 border border-primary rounded-lg p-8">
-              <p className="text-muted-foreground text-sm mb-2">Estimated Price</p>
+              <p className="text-muted-foreground text-sm mb-2">Estimated One-Time Cost</p>
               <p className="text-4xl font-bold text-primary mb-4">KES {estimatedPrice.toLocaleString()}</p>
-              <p className="text-xs text-muted-foreground">
-                *This is a preliminary estimate. Final pricing after consultation.
+
+              {recurringPrice > 0 && (
+                <div className="mt-4 pt-4 border-t border-primary/20">
+                  <p className="text-muted-foreground text-sm mb-2">Estimated Recurring Cost</p>
+                  <p className="text-3xl font-bold text-secondary">KES {recurringPrice.toLocaleString()}<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
+                </div>
+              )}
+
+              <p className="text-xs text-muted-foreground mt-4">
+                *This is a preliminary estimate. Final pricing provided after consultation.
               </p>
             </div>
 

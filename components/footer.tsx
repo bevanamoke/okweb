@@ -6,28 +6,47 @@ export default function Footer() {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-16 max-w-6xl">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-4 gap-8 md:gap-12 mb-12">
           {/* Brand */}
-          <div>
+          <div className="md:col-span-1">
             <div className="mb-4">
               <Image src="/logo.png" alt="OKS Logo" width={40} height={40} className="h-10 w-auto" />
             </div>
             <h3 className="text-2xl font-bold text-primary mb-4">OKS</h3>
-            <p className="text-foreground/60 text-sm">OmniTech Kernel Solutions — Smart. Scalable. African.</p>
+            <p className="text-foreground/60 text-sm leading-relaxed">
+              OmniTech Kernel Solutions — Enterprise infrastructure for African institutions.
+            </p>
           </div>
 
-          {/* Services */}
+          {/* Solutions */}
           <div>
-            <h4 className="font-semibold mb-4 text-foreground">Services</h4>
-            <ul className="space-y-2 text-sm text-foreground/60">
+            <h4 className="font-semibold mb-4 text-foreground">Core Solutions</h4>
+            <ul className="space-y-3 text-sm text-foreground/60">
               <li>
-                <Link href="/odoo" className="hover:text-primary transition">
-                  Odoo ERP
+                <Link href="/school_erp" className="hover:text-primary transition">
+                  School ERP
                 </Link>
               </li>
               <li>
+                <Link href="/hospitality_erp" className="hover:text-primary transition">
+                  Hospitality ERP
+                </Link>
+              </li>
+              <li>
+                <Link href="/odoo" className="hover:text-primary transition">
+                  Odoo Implementation
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Other Services */}
+          <div>
+            <h4 className="font-semibold mb-4 text-foreground">Services</h4>
+            <ul className="space-y-3 text-sm text-foreground/60">
+              <li>
                 <Link href="/ai-automation" className="hover:text-primary transition">
-                  AI Automation
+                  AI & Automation
                 </Link>
               </li>
               <li>
@@ -35,53 +54,9 @@ export default function Footer() {
                   Web & App Development
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Industries */}
-          <div>
-            <h4 className="font-semibold mb-4 text-foreground">Industries</h4>
-            <ul className="space-y-2 text-sm text-foreground/60">
               <li>
-                <Link href="/industries" className="hover:text-primary transition">
-                  All Industries
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries" className="hover:text-primary transition">
-                  Restaurants
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries" className="hover:text-primary transition">
-                  Retail
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries" className="hover:text-primary transition">
-                  Logistics
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold mb-4 text-foreground">Company</h4>
-            <ul className="space-y-2 text-sm text-foreground/60">
-              <li>
-                <Link href="/pricing" className="hover:text-primary transition">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <a href="mailto:info@oks.co.ke" className="hover:text-primary transition">
-                  Contact
-                </a>
-              </li>
-              <li>
-                <Link href="/" className="hover:text-primary transition">
-                  About Us
+                <Link href="/quote" className="hover:text-primary transition">
+                  Request Quote
                 </Link>
               </li>
             </ul>
